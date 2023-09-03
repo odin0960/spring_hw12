@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -14,15 +15,16 @@ public class NoteService {
     private final Map<Long, Note> notesBase;
 
     List<Note> listAll() {
-        List<Note> list = new ArrayList<Note>(notesBase.values());
-        return list;
+        return new ArrayList<>(notesBase.values());
     }
 
     Note add(Note note) {
         long id;
-        do {
-            id = (long) (Math.random() * 1000 + 1);
-        } while (notesBase.containsKey(id));
+        if (notesBase.isEmpty()) {
+            id = 1L;
+        } else {
+            id = Collections.max(notesBase.keySet()) + 1;
+        }
 
         note.setId(id);
         notesBase.put(id, note);
