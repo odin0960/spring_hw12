@@ -1,10 +1,9 @@
-package com.goit12.todolist;
+package com.goit12.todolist.entity;
 
 import lombok.Data;
 import org.springframework.stereotype.Service;
 
 @Data
-@Service
 public class Note {
     long id; //автогенерація
     String title;

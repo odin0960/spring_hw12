@@ -1,5 +1,6 @@
-package com.goit12.todolist;
+package com.goit12.todolist.service;
 
+import com.goit12.todolist.entity.Note;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +15,11 @@ public class NoteService {
 
     private final Map<Long, Note> notesBase;
 
-    List<Note> listAll() {
+    public List<Note> listAll() {
         return new ArrayList<>(notesBase.values());
     }
 
-    Note add(Note note) {
+    public Note add(Note note) {
         long id;
         if (notesBase.isEmpty()) {
             id = 1L;
@@ -32,7 +33,7 @@ public class NoteService {
         return note;
     }
 
-    void deleteById(long id) {
+    public void deleteById(long id) {
         if (notesBase.containsKey(id)) {
             notesBase.remove(id);
         } else {
@@ -40,7 +41,7 @@ public class NoteService {
         }
     }
 
-    void update(Note note) {
+    public void update(Note note) {
         if (notesBase.containsKey(note.getId())) {
             notesBase.replace(note.getId(), note);
         } else {
@@ -48,7 +49,7 @@ public class NoteService {
         }
     }
 
-    Note getById(long id) {
+    public Note getById(long id) {
         if (notesBase.containsKey(id)) {
             return notesBase.get(id);
         } else {
