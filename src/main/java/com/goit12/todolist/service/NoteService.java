@@ -26,10 +26,8 @@ public class NoteService {
         } else {
             id = Collections.max(notesBase.keySet()) + 1;
         }
-
         note.setId(id);
         notesBase.put(id, note);
-
         return note;
     }
 
@@ -56,5 +54,4 @@ public class NoteService {
             throw new IllegalArgumentException("Така нотатка відсутня");
         }
     }
-
 }

@@ -1,0 +1,33 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ToDoList</title>
+</head>
+
+
+<body>
+
+
+<h2>Редагувати нотатку</h2>
+<!--<form th:object="${note}" th:action="@{/note/edit}" method="POST">-->
+<form action="/note/edit" method="POST">
+    <div>
+        <label for="title">Назва: </label>
+        <input type="text" name="title" id="title" th:field="${note.title}">
+    </div>
+    <div>
+        <label for="content">Зміст: </label>
+        <textarea name="content" id="content" cols="40" rows="3" th:field="${note.content}"></textarea>
+    </div>
+    <div>
+        <input type="hidden" th:value="${note.id}" name="id">
+        <button type="submit">Зберегти</button>
+    </div>
+</form>
+
+
+</body>
