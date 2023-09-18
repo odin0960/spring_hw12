@@ -1,4 +1,4 @@
-INSERT INTO client (title, content)
+INSERT INTO note (title, content)
 VALUES
 	('AAA', 'aaaaaaaa'),
 	('BBB', 'bbbbbbbbbbbbbbbbbbbbbbbbbbb'),

@@ -8,56 +8,66 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ToDoList</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
 </head>
 <body>
-<!--<style>-->
-<!--    .note {-->
-<!--        padding: 10px;-->
-<!--        margin: 5px;-->
-<!--        background-color: lightgrey;-->
-<!--    }-->
 
-<!--    .note-content {-->
-<!--        padding: 5px;-->
-<!--        background-color: whitesmoke;-->
-<!--    }-->
-<!--</style>-->
+<!--<div class="container mt-3">-->
+<div class="container d-flex justify-content-center">
+    <div class="card text-center" style="width: 30rem;">
+        <h5 class="card-header">Додати нову нотатку</h5>
+        <div class="card-body">
+            <form action="/note/create" method="POST">
+                <div class="row mb-3">
+                    <label for="title" class="col-md-3 col-form-label">Назва: </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control" name="title" id="title">
+                    </div>
+                </div>
 
-<h2>Додати нотатку</h2>
-<form action="/note/create" method="POST">
-    <div>
-        <label for="title">Назва: </label>
-        <input type="text" name="title" id="title">
+                <div class="row mb-3">
+                    <label for="content" class="col-md-3 col-form-label">Зміст: </label>
+                    <div class="col-md-9">
+                        <textarea class="form-control" name="content" id="content" rows="3"></textarea>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-success">Додати</button>
+                </div>
+            </form>
+        </div>
     </div>
-    <div>
-        <label for="content">Зміст: </label>
-        <textarea name="content" id="content" cols="40" rows="3"></textarea>
-    </div>
-    <div>
-        <button type="submit">Відправити</button>
-    </div>
-</form>
-
-
-<h2 th:text="'Всього нотаток: ' + ${notes.size()}"></h2>
-<div th:each="note: ${notes}" class="note">
-    <div th:text="'Назва: ' + ${note.title}"></div>
-    <div class="note-content" th:text="${note.content}"></div>
-    <div>
-        <form action="/note/edit" method="GET">
-            <input type="hidden" th:value="${note.id}" name="id">
-            <button type="submit">Редагувати</button>
-        </form>
-
-        <form action="/note/delete" method="POST">
-            <input type="hidden" th:value="${note.id}" name="id">
-            <button type="submit">Видалити</button>
-        </form>
-    </div>
+    <br />
 </div>
 
+<h4 class="text-center" th:text="'Всього нотаток: ' + ${notes.size()}"></h4>
+
+<div class="container mt-3">
+    <div class="row gy-2">
+        <div class="col-sm-4" th:each="note: ${notes}">
+            <div class="card card-margin">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${note.title}"></h5>
+                    <p class="card-text" th:text="${note.content}"></p>
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <form action="/note/edit" method="GET">
+                            <input type="hidden" th:value="${note.id}" name="id">
+                            <button type="submit" class="btn btn-primary">Редагувати</button>
+                        </form>
+
+                        <form action="/note/delete" method="POST">
+                            <input type="hidden" th:value="${note.id}" name="id">
+                            <button type="submit" class="btn btn-danger">Видалити</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

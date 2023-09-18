@@ -1,12 +1,13 @@
 package com.goit12.todolist.controller;
 
 import com.goit12.todolist.entity.Note;
-import com.goit12.todolist.service.NoteService;
+import com.goit12.todolist.service.NoteServiceData;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/note")
 public class NoteController {
-    private final NoteService noteService;
+    private final NoteServiceData noteService;
 
     @GetMapping("/list")
     public ModelAndView getList() {
@@ -50,4 +51,17 @@ public class NoteController {
             noteService.update(note);
             return "redirect:/note/list";
     }
+
+//    @PostMapping("/edit")
+//    public RedirectView update(@RequestParam ("id") Long id,
+//                               @RequestParam String title,
+//                               @RequestParam String content){
+//        RedirectView redirectView = new RedirectView("/note/list");
+//        Note note = new Note();
+//        note.setId(id);
+//        note.setTitle(title);
+//        note.setContent(content);
+//        noteService.update(note);
+//        return redirectView;
+//    }
 }

@@ -5,16 +5,16 @@ import lombok.Data;
 
 @Data
 @Entity
-//@Table(name = "note")
+@Table(name = "note")
 public class Note {
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-//    @Column(name = "title", nullable = false, length = 50)
+    @Column(name = "title", nullable = false, length = 50)
     private String title;
 
-//    @Column(name = "content", nullable = false, length = 2000)
+    @Column(name = "content", nullable = false, length = 2000)
     private String content;
 
 
