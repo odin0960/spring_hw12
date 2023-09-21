@@ -2,7 +2,7 @@ package com.goit12.todolist.controller;
 
 import com.goit12.todolist.entity.DTO.NoteDTO;
 import com.goit12.todolist.entity.Note;
-import com.goit12.todolist.service.NoteService;
+import com.goit12.todolist.service.NoteServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/note")
 public class NoteController {
-    private final NoteService noteService;
+    private final NoteServiceImpl noteService;
 
     @GetMapping("/list")
     public ModelAndView getList() {
@@ -47,7 +47,6 @@ public class NoteController {
     }
 
         @PostMapping("/edit")
-//        public String edit(@ModelAttribute Note note) {
         public String edit(@ModelAttribute NoteDTO note) {
             noteService.update(note);
             return "redirect:/note/list";
