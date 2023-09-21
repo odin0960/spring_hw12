@@ -1,57 +1,47 @@
 package com.goit12.todolist.service;
 
+import com.goit12.todolist.entity.DTO.NoteDTO;
 import com.goit12.todolist.entity.Note;
+import com.goit12.todolist.mappers.NoteMapper;
+import com.goit12.todolist.repository.NoteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 @RequiredArgsConstructor
 @Service
 public class NoteService {
-
-    private final Map<Long, Note> notesBase;
-
-    public List<Note> listAll() {
-        return new ArrayList<>(notesBase.values());
-    }
+    private final NoteRepository noteRepository;
+    private final NoteMapper mapper;
 
     public Note add(Note note) {
-        long id;
-        if (notesBase.isEmpty()) {
-            id = 1L;
-        } else {
-            id = Collections.max(notesBase.keySet()) + 1;
-        }
-        note.setId(id);
-        notesBase.put(id, note);
-        return note;
+        return noteRepository.save(note);
     }
 
-    public void deleteById(long id) {
-        if (notesBase.containsKey(id)) {
-            notesBase.remove(id);
-        } else {
-            throw new IllegalArgumentException("Такий індекс відсутній");
-        }
+    public List<NoteDTO> listAll() {
+//    public List<Note> listAll() {
+//        return noteRepository.findAll();
+//        return noteRepository.findAll().stream().map(mapper::toCustomNote).collect(Collectors.toList());
+        return noteRepository.findAll().stream().map(mapper::toNoteDto).toList();
     }
 
-    public void update(Note note) {
-        if (notesBase.containsKey(note.getId())) {
-            notesBase.replace(note.getId(), note);
-        } else {
-            throw new IllegalArgumentException("Така нотатка відсутня");
-        }
+    public NoteDTO getById(Long id) {
+//        return noteRepository.findById(id).orElseThrow();
+        return noteRepository.findById(id).map(mapper::toNoteDto).orElseThrow();
     }
 
-    public Note getById(long id) {
-        if (notesBase.containsKey(id)) {
-            return notesBase.get(id);
-        } else {
-            throw new IllegalArgumentException("Така нотатка відсутня");
-        }
+    public Note update(NoteDTO note) {
+        Note entity = mapper.toEntity(note);
+        return noteRepository.save(entity);
     }
+
+    public void deleteById(Long id) {
+        noteRepository.deleteById(id);
+    }
+
+    public void deleteNote(Note note) {
+        noteRepository.delete(note);
+    }
+
 }

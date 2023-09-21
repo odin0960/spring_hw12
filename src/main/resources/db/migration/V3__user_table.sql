@@ -1,0 +1,5 @@
+create TABLE IF NOT EXISTS users (
+	id BIGINT PRIMARY KEY AUTO_INCREMENT,
+	username VARCHAR (20) NOT NULL CHECK (CHAR_LENGTH(username) >= 3),
+	password VARCHAR (20) NOT NULL CHECK (CHAR_LENGTH(password) >= 8)
+);

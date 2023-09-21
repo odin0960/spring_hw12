@@ -1,12 +1,15 @@
 package com.goit12.todolist.mappers;
 
-import com.goit12.todolist.entity.DTO.CustomNote;
+import com.goit12.todolist.entity.DTO.NoteDTO;
 import com.goit12.todolist.entity.Note;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface NoteMapper {
-CustomNote toCustomNote(Note note);
+//    @Mapping(target = "shortContent", source = "content")
+    NoteDTO toNoteDto(Note note);
+    Note toEntity(NoteDTO noteDto);
+
+//    List<NoteDTO> asListNoteDto(List<Note> noteList);
 
 }

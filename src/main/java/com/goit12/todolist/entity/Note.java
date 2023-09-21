@@ -9,7 +9,7 @@ import lombok.Data;
 public class Note {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name = "title", nullable = false, length = 50)
     private String title;
