@@ -1,9 +1,10 @@
-package com.goit12.todolist.service;
+package com.goit12.todolist.service.impl;
 
 import com.goit12.todolist.entity.DTO.NoteDTO;
 import com.goit12.todolist.entity.Note;
 import com.goit12.todolist.mappers.NoteMapper;
 import com.goit12.todolist.repository.NoteRepository;
+import com.goit12.todolist.service.NoteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Service
-public class NoteServiceImpl implements NoteService{
+public class NoteServiceImpl implements NoteService {
     private final NoteRepository noteRepository;
     private final NoteMapper mapper;
 

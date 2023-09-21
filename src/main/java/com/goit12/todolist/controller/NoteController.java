@@ -2,7 +2,7 @@ package com.goit12.todolist.controller;
 
 import com.goit12.todolist.entity.DTO.NoteDTO;
 import com.goit12.todolist.entity.Note;
-import com.goit12.todolist.service.NoteServiceImpl;
+import com.goit12.todolist.service.impl.NoteServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
