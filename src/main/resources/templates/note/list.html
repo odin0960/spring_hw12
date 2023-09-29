@@ -1,5 +1,7 @@
+<!-- ! Tab -->
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
+<!--      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">-->
 
 <head>
     <meta charset="UTF-8">
@@ -13,6 +15,13 @@
 
 </head>
 <body>
+
+<h3>Hello <span th:text="${username}"></span></h3>
+<a href="/note/reg">Реєструвати нового користувача</a>
+<form th:action="@{/logout}" method="post">
+<!--    <input type="submit" value="Logout" />-->
+    <button type="submit" class="btn btn-warning" value="Logout">Logout</button>
+</form>
 
 <div class="container d-flex justify-content-center">
     <div class="card text-center" style="width: 30rem;">

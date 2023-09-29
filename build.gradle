@@ -65,3 +65,14 @@ compileJava {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+bootJar {
+    archiveFileName = "todolist.jar"
+}
+
+tasks.register('release', Copy) {
+    from './build/libs/todolist.jar'
+    into './'
+}
+
+release.dependsOn bootJar

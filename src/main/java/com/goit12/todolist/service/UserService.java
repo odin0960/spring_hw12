@@ -8,6 +8,6 @@ public interface UserService {
     public User add(User user);
     public List<UserDTO> userList();
     public UserDTO getByName(String username);
-    public User update(UserDTO user);
+    public User update(User user);
     public void delete(User user);
 }
