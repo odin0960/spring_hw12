@@ -1,24 +1,25 @@
 package com.goit12.todolist.service.impl;
 
 import com.goit12.todolist.entity.DTO.UserDTO;
-import com.goit12.todolist.entity.Note;
 import com.goit12.todolist.entity.User;
 import com.goit12.todolist.mappers.UserMapper;
 import com.goit12.todolist.repository.UserRepository;
 import com.goit12.todolist.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final UserMapper mapper;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public User add(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 

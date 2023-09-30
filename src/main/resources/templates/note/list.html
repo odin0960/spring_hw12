@@ -1,6 +1,6 @@
 <!-- ! Tab -->
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <!--      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">-->
 
 <head>
@@ -17,7 +17,7 @@
 <body>
 
 <h3>Hello <span th:text="${username}"></span></h3>
-<a href="/note/reg">Реєструвати нового користувача</a>
+<a href="/user/reg">Реєструвати нового користувача</a>
 <form th:action="@{/logout}" method="post">
 <!--    <input type="submit" value="Logout" />-->
     <button type="submit" class="btn btn-warning" value="Logout">Logout</button>

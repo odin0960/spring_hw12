@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -18,7 +18,7 @@
     <div class="card text-center" style="width: 30rem;">
         <h5 class="card-header">Додати нового користувача</h5>
         <div class="card-body">
-            <form th:action="@{/note/reg}" th:object="${user}" method="POST">
+            <form th:action="@{/user/reg}" th:object="${user}" method="POST">
                 <div class="row mb-3">
                     <label for="username" class="col-md-3 col-form-label">Ім'я: </label>
                     <div class="col-md-9">
