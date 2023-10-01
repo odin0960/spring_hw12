@@ -34,6 +34,7 @@ ext {
 }
 
 dependencies {
+    implementation 'org.springframework.boot:spring-boot-gradle-plugin:3.1.4'
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
@@ -68,11 +69,13 @@ tasks.named('test') {
 
 bootJar {
     archiveFileName = "todolist.jar"
+    launchScript()
 }
 
 tasks.register('release', Copy) {
     from './build/libs/todolist.jar'
-    into './'
+    into '.'
 }
 
 release.dependsOn bootJar
+//bootJar.finalizedBy release
