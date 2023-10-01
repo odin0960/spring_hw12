@@ -69,7 +69,7 @@ tasks.named('test') {
 
 bootJar {
     archiveFileName = "todolist.jar"
-    launchScript()
+//    launchScript()
 }
 
 tasks.register('release', Copy) {
